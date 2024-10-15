@@ -1,0 +1,7 @@
+# Package-lock.json
+package-lock.json
+.dynamodb/
+.env
+.vscode/
+node_modules/
+
