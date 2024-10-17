@@ -125,6 +125,16 @@ const getListHotelsData = async () => {
       console.log("error", i);
     }
   }
+  // remove hotel sponsor data
+  dataListHotel = dataListHotel.filter((hotel) => {
+    if (
+      hotel.resultDetail?.merchandisingLabels?.length >= 1 &&
+      hotel.resultDetail.merchandisingLabels[0]?.id === "SPONSORED"
+    )
+      return false;
+
+    return true;
+  });
 
   createMultipleHotels(dataListHotel);
   convertDataToCsv({ fields, data: dataListHotel });

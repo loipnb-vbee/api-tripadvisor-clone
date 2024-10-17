@@ -4,7 +4,7 @@ const Hotel = require("../models/hotel");
 const createHotel = async (hotelData) => {
   try {
     const createHotel = await Hotel.findOneAndUpdate(
-      { locationId: hotelData?.locationId },
+      { hotelResultKey: hotelData?.hotelResultKey },
       { $set: hotelData },
       { new: true, upsert: true }
     );
@@ -16,6 +16,9 @@ const createHotel = async (hotelData) => {
 
 const createMultipleHotels = async (hotels) => {
   try {
+    // const hotelDelete = await Hotel.deleteMany({
+    //   "resultDetail.merchandisingLabels.id": "SPONSORED",
+    // });
     await Promise.all(hotels.map((hotel) => createHotel(hotel)));
     console.log("All hotels processed:", hotels.length);
   } catch (error) {
