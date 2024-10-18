@@ -49,6 +49,11 @@ const findAllHotel = async () => {
   return hotels;
 };
 
+const findListLocationIds = async () => {
+  const locationIds = await Hotel.distinct("locationId");
+  return locationIds;
+};
+
 const updateHotel = async (condition, data) => {
   const hotel = await Hotel.findOneAndUpdate(condition, data, {
     new: true,
@@ -69,4 +74,5 @@ module.exports = {
   findHotel,
   findAllHotel,
   updateHotel,
+  findListLocationIds,
 };

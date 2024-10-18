@@ -1,7 +1,7 @@
 const axios = require("axios");
 const fs = require("fs");
+const hotelDaos = require("../daos/hotel");
 const { convertDataToCsv } = require("../utils/dataToCsv");
-const { createMultipleHotels } = require("../daos/hotel");
 
 const url = "https://www.tripadvisor.com.vn/data/graphql/ids";
 
@@ -136,7 +136,7 @@ const getListHotelsData = async () => {
     return true;
   });
 
-  createMultipleHotels(dataListHotel);
+  await hotelDaos.createMultipleHotels(dataListHotel);
   convertDataToCsv({ fields, data: dataListHotel });
   return dataListHotel;
 };
