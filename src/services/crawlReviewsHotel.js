@@ -1,10 +1,7 @@
-const axios = require("axios");
-const fs = require("fs");
 const hotelDaos = require("../daos/hotel");
 const hotelReviewDaos = require("../daos/reviewHotel");
 const { convertDataToCsv } = require("../utils/dataToCsv");
 const callApi = require("../utils/callApi");
-const hotel = require("../models/hotel");
 
 const url = "https://www.tripadvisor.com.vn/data/graphql/ids";
 
